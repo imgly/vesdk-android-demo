@@ -10,7 +10,9 @@ alt="VideoEditor SDK Demo Trailer" width="320" height="180" border="10" /><cente
 
 With an intuitive UI, an extensive filter gallery, advanced adjustment tools and crops for social aspect ratios you’ll empower your users to create engaging and professional looking videos in a breeze.
 
-[Sign up for Beta](https://photoeditorsdk.us13.list-manage.com/subscribe?u=dc9f652839dbb620d14d6d28d&id=239245b33f)
+<a href="https://photoeditorsdk.us13.list-manage.com/subscribe?u=dc9f652839dbb620d14d6d28d&id=239245b33f" target="_blank"><center><img src="https://github.com/imgly/vesdk-android-demo/blob/master/CTA.png"
+alt="VideoEditor SDK Sign up for Beta" width="180" height="72" border="0" /><center></a>
+
 
 ## Features
 
