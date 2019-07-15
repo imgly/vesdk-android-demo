@@ -6,7 +6,7 @@
 
 # Seamlessly integrate video creation into your Android applications
 
-[VideoEditor SDK](https://video.photoeditorsdk.com/) expands the powerful tools and features of the PhotoEditor SDK into the realm of mobile video creation.
+[VideoEditor SDK](https://video.photoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android) expands the powerful tools and features of the PhotoEditor SDK into the realm of mobile video creation.
 
 With an intuitive UI, an extensive filter gallery, advanced adjustment tools and crops for social aspect ratios you’ll empower your users to create engaging and professional looking videos in a breeze.
   
