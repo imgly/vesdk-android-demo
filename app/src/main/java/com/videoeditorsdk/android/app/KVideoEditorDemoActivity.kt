@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -24,6 +23,7 @@ import ly.img.android.pesdk.backend.model.state.SaveSettings
 import ly.img.android.pesdk.backend.model.state.manager.SettingsList
 import ly.img.android.pesdk.backend.model.state.manager.configure
 import ly.img.android.pesdk.ui.activity.ImgLyIntent
+import ly.img.android.pesdk.ui.activity.VideoEditorBuilder
 import ly.img.android.pesdk.ui.model.state.*
 import ly.img.android.pesdk.ui.utils.PermissionRequest
 import ly.img.android.serializer._3._0._0.PESDKFileWriter
