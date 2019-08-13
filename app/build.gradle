@@ -59,6 +59,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        resValue 'string', 'vesdk_version', "v$vesdk_version"
     }
     /* Set Java Language level to Java 1.8+ */
     compileOptions {
