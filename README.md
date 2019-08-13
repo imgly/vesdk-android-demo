@@ -61,4 +61,4 @@ A compelling message adds the final touch to any video. The VideoEditor SDK prov
 Make sure you have a commercial license before releasing your app. A commercial license is required for any app or service that has any form of monetization: This includes free apps with in-app purchases or ad supported applications. Please contact us if you want to purchase the commercial license.
 
 ## Support and License
-Use our [service desk](support.videoeditorsdk.com) for bug reports or support requests. To request a commercial license, please use the [license request](account.photoeditorsdk.com/pricing?product=vesdk) form on our website.
+Use our [service desk](https://support.videoeditorsdk.com) for bug reports or support requests. To request a commercial license, please use the [license request](https://account.photoeditorsdk.com/pricing?product=vesdk) form on our website.
