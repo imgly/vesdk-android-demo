@@ -1,4 +1,4 @@
-# PhotoEditor SDK - Changelog
+# VideoEditor SDK - Changelog
 
 ## v7.0.0
 
