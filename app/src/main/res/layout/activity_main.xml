@@ -21,7 +21,7 @@
               android:paddingRight="16dp"
               android:paddingTop="16dp"
               android:paddingBottom="16dp"
-              tools:context=".KVideoEditorDemoActivity"
+              tools:context=".JVideoEditorDemoActivity"
               android:background="#FFFFFF"
               android:layout_alignParentTop="true">
 
