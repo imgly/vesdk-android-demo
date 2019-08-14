@@ -82,7 +82,6 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
                 it.setSavePolicy(SaveSettings.SavePolicy.RETURN_ALWAYS_ONLY_OUTPUT)
             }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
