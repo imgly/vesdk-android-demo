@@ -9,6 +9,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.support.annotation.RequiresApi
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import ly.img.android.pesdk.VideoEditorSettingsList
 import ly.img.android.pesdk.assets.filter.basic.FilterPackBasic
@@ -88,12 +89,18 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        openSystemGalleryToSelectAnVideo()
+        val openGallery = findViewById<Button>(R.id.openGallery)
+
+        openGallery.setOnClickListener {
+            openSystemGalleryToSelectAnVideo()
+        }
 
     }
 
     fun openSystemGalleryToSelectAnVideo() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.setDataAndType(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,"video/*")
+
         if (intent.resolveActivity(packageManager) != null) {
             startActivityForResult(intent, GALLERY_RESULT)
         } else {
