@@ -20,6 +20,7 @@ import ly.img.android.pesdk.assets.sticker.shapes.StickerPackShapes
 import ly.img.android.pesdk.backend.model.constant.Directory
 import ly.img.android.pesdk.backend.model.state.LoadSettings
 import ly.img.android.pesdk.backend.model.state.SaveSettings
+import ly.img.android.pesdk.backend.model.state.VideoEditorSaveSettings
 import ly.img.android.pesdk.backend.model.state.manager.SettingsList
 import ly.img.android.pesdk.backend.model.state.manager.configure
 import ly.img.android.pesdk.ui.activity.ImgLyIntent
@@ -75,11 +76,11 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
                     StickerPackShapes.getStickerCategory()
                 )
             }
-            .configure<SaveSettings> {
+            .configure<VideoEditorSaveSettings> {
                 // Set custom editor image export settings
                 it.setExportDir(Directory.DCIM, "SomeFolderName")
                 it.setExportPrefix("result_")
-                it.savePolicy = SaveSettings.SavePolicy.RETURN_ALWAYS_ONLY_OUTPUT
+                it.setSavePolicy(SaveSettings.SavePolicy.RETURN_ALWAYS_ONLY_OUTPUT)
             }
 
 
@@ -88,6 +89,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
         setContentView(R.layout.activity_main)
 
         openSystemGalleryToSelectAnVideo()
+
     }
 
     fun openSystemGalleryToSelectAnVideo() {
