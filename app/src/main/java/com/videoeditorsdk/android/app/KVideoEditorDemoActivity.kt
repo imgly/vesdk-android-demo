@@ -3,9 +3,7 @@ package com.videoeditorsdk.android.app
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
-import android.os.Bundle
-import android.os.Environment
+import android.os.*
 import android.provider.MediaStore
 import android.support.annotation.RequiresApi
 import android.util.Log
@@ -112,7 +110,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
         }
     }
 
-    fun openEditor(inputImage: Uri) {
+    fun openEditor(inputImage: Uri?) {
         val settingsList = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
             createVesdkSettingsList()
         } else {
@@ -131,22 +129,21 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
             .startActivityForResult(this, VESDK_RESULT)
     }
 
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == RESULT_OK && requestCode == GALLERY_RESULT) {
             // Open Editor with some uri in this case with an video selected from the system gallery.
-            openEditor(data.data!!)
+            openEditor(data?.data)
 
-        } else if (resultCode == RESULT_OK && requestCode == VESDK_RESULT) { // Editor has saved an Video.
-
-            val resultURI = data.getParcelableExtra<Uri?>(ImgLyIntent.RESULT_IMAGE_URI)?.also {
+        } else if (resultCode == RESULT_OK && requestCode == VESDK_RESULT) {
+            // Editor has saved an Video.
+            val resultURI = data?.getParcelableExtra<Uri?>(ImgLyIntent.RESULT_IMAGE_URI)?.also {
                 // Scan result uri to show it up in the Gallery
                 sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE).setData(it))
             }
 
-            val sourceURI = data.getParcelableExtra<Uri?>(ImgLyIntent.SOURCE_IMAGE_URI)?.also {
+            val sourceURI = data?.getParcelableExtra<Uri?>(ImgLyIntent.SOURCE_IMAGE_URI)?.also {
                 // Scan source uri to show it up in the Gallery
                 sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE).setData(it))
             }
@@ -157,7 +154,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
             // TODO: Do something with the result image
 
             // OPTIONAL: read the latest state to save it as a serialisation
-            val lastState = data.getParcelableExtra<SettingsList>(ImgLyIntent.SETTINGS_LIST)
+            val lastState = data?.getParcelableExtra<SettingsList>(ImgLyIntent.SETTINGS_LIST)
             try {
                 PESDKFileWriter(lastState).writeJson(
                     File(
@@ -171,7 +168,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
 
         } else if (resultCode == RESULT_CANCELED && requestCode == VESDK_RESULT) {
             // Editor was canceled
-            val sourceURI = data.getParcelableExtra<Uri?>(ImgLyIntent.SOURCE_IMAGE_URI)
+            val sourceURI = data?.getParcelableExtra<Uri?>(ImgLyIntent.SOURCE_IMAGE_URI)
             // TODO: Do something with the source...
         }
     }
