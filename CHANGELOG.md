@@ -1,5 +1,15 @@
 # VideoEditor SDK - Changelog
 
+## v7.0.1
+
+### Fixed
+* Fix, OOM if device report a too high maxTextureSize.
+* Fix, crash on some older devices.
+* Some gradle build issues.
+* Brush is not drawn with the selected color.
+* Wrong preview if image or video is rotated. 
+* Kotlin extension `(Video|Photo)EditorSettingsList.configure<>{}` has return `SettingsList` instead of `(Video|Photo)EditorSettingsList`.
+
 ## v7.0.0
 
 ### Added
