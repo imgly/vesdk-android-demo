@@ -1,5 +1,15 @@
 # VideoEditor SDK - Changelog
 
+## v7.0.2
+
+### Fixed
+* Blur tile glitch.
+* Export canceled in background.
+* Filter preview sometimes broken.
+* Missing thumbnail item in overlay.
+* Battery drain on some devices.
+* MathUtils.wrapTo360() is outside of range if value is negative.
+
 ## v7.0.1
 
 ### Fixed
