@@ -1,5 +1,11 @@
 # VideoEditor SDK - Changelog
 
+## v7.0.3
+
+### Fixed
+* The opacity adjustment of stickers cannot be undone.
+* Error: `package android.support.annotation does not exist` when using AndroidX.
+
 ## v7.0.2
 
 ### Fixed
