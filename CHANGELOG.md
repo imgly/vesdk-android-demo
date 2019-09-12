@@ -1,4 +1,36 @@
-# VideoEditor SDK - Changelog
+# PhotoEditor SDK - Changelog
+
+## v7.0.4
+
+### Fixed
+* SaveSettings are ignored.
+* Sticker color can not applied under specific conditions.
+* Image zoom out after option changes.
+* Unwanted painting on the image after zoom with activated brush tool.
+* Native Android crash on some devices after change the brush size.
+* TextDesign layout do not change in the UI after switching to another the TextDesign sticker.
+
+### Changed
+* Updated kotlin version to `1.3.50`.
+* Internal use of build tools `29.0.2`
+
+### Added
+* Missing feature flag from v5 `TextGlLayer.BOUNDING_BOX_WIDTH_AUTO_FIT` if false the bounding box is not auto fitting after font changes.
+
+## v6.6.2
+
+### Fixed
+* The opacity adjustment of stickers cannot be undone.
+* Sticker color can not applied under specific conditions.
+* Image zoom out after option changes.
+* Unwanted painting on the image after zoom with activated brush tool.
+* Brush History is broken.
+* Native Android crash on some devices after change the brush size.
+* TextDesign layout do not change in the UI after switching to another the TextDesign sticker.
+
+### Added
+* Missing feature flag from v5 `TextGlLayer.BOUNDING_BOX_WIDTH_AUTO_FIT` if false the bounding box is not auto fitting after font changes.
+
 
 ## v7.0.3
 
@@ -19,16 +51,16 @@
 ## v7.0.1
 
 ### Fixed
-* Fix, OOM if device report a too high maxTextureSize.
-* Fix, crash on some older devices.
+* OOM if device report a too high maxTextureSize.
+* crash on some older devices.
 * Some gradle build issues.
 * Brush is not drawn with the selected color.
 * Wrong preview if image or video is rotated. 
-* Kotlin extension `(Video|Photo)EditorSettingsList.configure<>{}` has return `SettingsList` instead of `(Video|Photo)EditorSettingsList`.
+* Kotlin extension `(Video|Photo)EditorSettingsList.configure<>{}` has return `SettingsList` instead of `(Video|Photo)EditorSettingsList`. 
 
 ## v7.0.0
 
-### Added
+###Added
 * First release of VideoEditorSDK [videoeditorsdk.com](https://videoeditorsdk.com).
 * You can use SourceType.detectTypeSafe() on WorkerThread to detect supported images and videos now.
 * You can use SourceType.detectTypeFast() on AnyThread to detect images and videos by name.
@@ -42,16 +74,13 @@
 * `EditorSaveSettings` are now PhotoEditorSaveSettings and VideoEditorSaveSettings.
 * `SettingsList` are deprecated now use `PhotoEditorSettingsList` and `PhotoEditorSaveSettings` instead.
 * `EditorLoadSettings` are deprecated use `LoadSettings` instead.
-* Removed `RelativeRectAccurate class.
+* Removed `RelativeRectAccurate` class.
 
 ### Know limitations
 * The Camera do not support video's use the device camera app instead to take photo's and video's
 
 ### Fixed
 * AndroidX projects crashes.
-
-## Update to AndroidX with v6 and older
-Recently, we have come across a bug that, unfortunately, affects our PhotoEditor SDK for Android if it is being updated with AndroidX. After some investigation on this matter, we found out that Google knows about it, but has not yet been able to solve it. In this reference (https://issuetracker.google.com/issues/119582492) you will currently find further information. However, we are currently working on a fix by establishing a new renderer for this matter. *Generally, we’d kindly ask you to refrain from updating to Android X at this stage*. We will keep you posted once our solution for the PhotoEditor SDK allows you to use AndroidX without any constraints or concerns.
 
 ## v6.6.1
 
