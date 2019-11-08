@@ -1,9 +1,14 @@
 # VideoEditor SDK - Changelog
+## v7.0.9
+
+### Fixed
+* TransformSettings.setForceCrop() throwing `ArithmeticException. 
+
 ## v7.0.8
 
 ### Fixed
 * Video export says "Exporting Image".
-* TransformSettings.setForceCrop() throwing `ArithmeticException`. 
+* ~~TransformSettings.setForceCrop() throwing `ArithmeticException.~~ 
 * Video encoding takes some while at the end of stream.
 * Deadlock while editing.
 
