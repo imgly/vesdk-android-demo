@@ -1,10 +1,8 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-
 // Apply the IMGLYPlugin
 apply plugin: 'ly.img.android.sdk'
+apply plugin: 'kotlin-android'
 
 // Configure the IMGLYPlugin
 imglyConfig {
@@ -13,9 +11,6 @@ imglyConfig {
         enabled true
         licencePath 'vesdk_android_license.dms'
     }
-
-    // If you use another supportLibVersion ('com.android.support'), change this version here to update your own supportLibVersion
-    supportLibVersion "28.0.0"
 
     // Define the modules you are need
     modules {
