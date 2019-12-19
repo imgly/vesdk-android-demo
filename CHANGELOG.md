@@ -1,5 +1,30 @@
 # VideoEditor SDK - Changelog
 
+## v7.1.5
+
+### Added
+* Child friendly version of `StickerPackEmoticons`.
+
+### Fixed
+* Wrong item type in default `UIConfigSticker.quickOptionList`.
+* A circular crop mask is in the defaults.
+* Choose of a wrong force crop for landscape images.
+* Video timer calculation shows wrong time.
+
+### Removed
+* Circular crop mask.
+
+## v7.1.4
+
+### Added
+* Universal config loader for frameworks like react native.
+
+### Changed 
+* 🚨 Some of the public API method has changed when accessed from kotlin. This is because we have convert some of our Code from JAVA to Kotlin internally.  
+
+### Fixed
+* JPEG Quality is bad, because of a wrong discrete cosine transformation.
+
 ## v7.0.10
 
 ### Fixed
