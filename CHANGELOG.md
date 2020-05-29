@@ -1,5 +1,11 @@
 # PhotoEditor SDK - Changelog
 
+## 7.2.4
+ 
+### Fixed
+* In exceptional cases, the preview image is not displayed.
+
+
 ## 7.2.3
 
 ### Fixed
