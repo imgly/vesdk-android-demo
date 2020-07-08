@@ -3,7 +3,9 @@ package com.videoeditorsdk.android.app
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.support.annotation.RequiresApi
 import android.util.Log
@@ -21,8 +23,10 @@ import ly.img.android.pesdk.backend.model.constant.Directory
 import ly.img.android.pesdk.backend.model.state.LoadSettings
 import ly.img.android.pesdk.backend.model.state.SaveSettings
 import ly.img.android.pesdk.backend.model.state.VideoEditorSaveSettings
+import ly.img.android.pesdk.ui.activity.ImgLyIntent
 import ly.img.android.pesdk.ui.activity.VideoEditorBuilder
 import ly.img.android.pesdk.ui.model.state.*
+import ly.img.android.pesdk.ui.panels.item.PersonalStickerAddItem
 import ly.img.android.pesdk.ui.utils.PermissionRequest
 import ly.img.android.serializer._3.IMGLYFileWriter
 import java.io.File
@@ -33,6 +37,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
     companion object {
         const val VESDK_RESULT = 1
         const val GALLERY_RESULT = 2
+        const val CAMERA_APP_RESULT = 3
     }
 
     // Important permission request for Android 6.0 and above, don't forget to add this!
@@ -69,12 +74,13 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
             }
             .configure<UiConfigSticker> {
                 it.setStickerLists(
-                    StickerPackEmoticons.getStickerCategory(),
+                    PersonalStickerAddItem(),
+                    StickerPackEmoticons.getStickerCategory(true),
                     StickerPackShapes.getStickerCategory()
                 )
             }
             .configure<VideoEditorSaveSettings> {
-                // Set custom editor image export settings
+                // Set custom editor video export settings
                 it.setExportDir(Directory.DCIM, "SomeFolderName")
                 it.setExportPrefix("result_")
                 it.setSavePolicy(SaveSettings.SavePolicy.RETURN_ALWAYS_ONLY_OUTPUT)
@@ -84,15 +90,43 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val openGallery = findViewById<Button>(R.id.openGallery)
-
-        openGallery.setOnClickListener {
-            openSystemGalleryToSelectAnVideo()
+        val openCameraApp = findViewById<Button>(R.id.takeVideo)
+        openCameraApp.setOnClickListener {
+            openAvailableCameraAppToRecordVideo()
         }
 
+        val openGallery = findViewById<Button>(R.id.openGallery)
+        openGallery.setOnClickListener {
+            openSystemGalleryToSelectVideo()
+        }
     }
 
-    fun openSystemGalleryToSelectAnVideo() {
+    private fun openAvailableCameraAppToRecordVideo() {
+        Intent(MediaStore.ACTION_VIDEO_CAPTURE).also { videoIntent ->
+            videoIntent.resolveActivity(packageManager)?.also {
+
+                val delegator = ImgLyIntent.ResultDelegator(this)
+                val permissions = PermissionRequest.NEEDED_PREVIEW_PERMISSIONS_AND_FINE_LOCATION
+
+                if (PermissionRequest.hasAllPermission(delegator.context, permissions)) {
+                    delegator.startActivityForResult(videoIntent, CAMERA_APP_RESULT)
+                } else PermissionRequest.getPermission(delegator, permissions,
+                    object : PermissionRequest.Response {
+                        override fun permissionGranted() {
+                            delegator.permissionGranted()
+                            delegator.startActivityForResult(videoIntent, CAMERA_APP_RESULT)
+                        }
+
+                        override fun permissionDenied() {
+                            delegator.permissionDenied()
+                        }
+                    })
+            }
+        }
+    }
+
+
+    fun openSystemGalleryToSelectVideo() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.setDataAndType(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,"video/*")
 
@@ -129,21 +163,27 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent) {
         super.onActivityResult(requestCode, resultCode, intent)
 
-        if (resultCode == RESULT_OK && requestCode == GALLERY_RESULT) {
+        if (resultCode == RESULT_OK && requestCode == CAMERA_APP_RESULT) {
+            // Open an available camera app to take a video.
+            /*val selectedImage = intent.data
+            openEditor(selectedImage)*/
+            val selectedVideo = intent.data
+            openEditor(selectedVideo)
+        } else if (resultCode == RESULT_OK && requestCode == GALLERY_RESULT) {
             // Open Editor with some uri in this case with an video selected from the system gallery.
-            val selectedImage = intent.data
-            openEditor(selectedImage)
+            val selectedVideo = intent.data
+            openEditor(selectedVideo)
         } else if (resultCode == RESULT_OK && requestCode == VESDK_RESULT) {
             // Editor has saved an Video.
             val data = EditorSDKResult(intent)
 
-            // This adds the result and source image to Android's gallery
+            // This adds the result and source video to Android's gallery
             data.notifyGallery(EditorSDKResult.UPDATE_RESULT and EditorSDKResult.UPDATE_SOURCE)
 
             Log.i("VESDK", "Source video is located here ${data.sourceUri}")
             Log.i("VESDK", "Result video is located here ${data.resultUri}")
 
-            // TODO: Do something with the result image
+            // TODO: Do something with the result
 
             // OPTIONAL: read the latest state to save it as a serialisation
             val lastState = data.settingsList
