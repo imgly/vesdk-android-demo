@@ -33,6 +33,19 @@
             android:layout_gravity="center_horizontal"/>
 
     <Button
+        android:id="@+id/takeVideo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="8dp"
+        android:textSize="12sp"
+        android:text="TAKE VIDEO"
+        android:textColor="#4C4C4C"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_launcher_background"/>
+
+    <Button
             android:id="@+id/openGallery"
             android:layout_width="match_parent"
             android:layout_height="0dp"
