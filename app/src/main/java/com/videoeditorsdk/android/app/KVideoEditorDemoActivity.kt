@@ -14,6 +14,7 @@ import ly.img.android.pesdk.assets.filter.basic.FilterPackBasic
 import ly.img.android.pesdk.assets.font.basic.FontPackBasic
 import ly.img.android.pesdk.assets.frame.basic.FramePackBasic
 import ly.img.android.pesdk.assets.overlay.basic.OverlayPackBasic
+import ly.img.android.pesdk.assets.sticker.animated.StickerPackAnimated
 import ly.img.android.pesdk.assets.sticker.emoticons.StickerPackEmoticons
 import ly.img.android.pesdk.assets.sticker.shapes.StickerPackShapes
 import ly.img.android.pesdk.backend.model.EditorSDKResult
@@ -23,6 +24,7 @@ import ly.img.android.pesdk.backend.model.state.SaveSettings
 import ly.img.android.pesdk.backend.model.state.VideoEditorSaveSettings
 import ly.img.android.pesdk.ui.activity.VideoEditorBuilder
 import ly.img.android.pesdk.ui.model.state.*
+import ly.img.android.pesdk.ui.panels.item.PersonalStickerAddItem
 import ly.img.android.pesdk.ui.utils.PermissionRequest
 import ly.img.android.serializer._3.IMGLYFileWriter
 import java.io.File
@@ -69,8 +71,10 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
             }
             .configure<UiConfigSticker> {
                 it.setStickerLists(
+                    PersonalStickerAddItem(),
                     StickerPackEmoticons.getStickerCategory(),
-                    StickerPackShapes.getStickerCategory()
+                    StickerPackShapes.getStickerCategory(),
+                    StickerPackAnimated.getStickerCategory()
                 )
             }
             .configure<VideoEditorSaveSettings> {

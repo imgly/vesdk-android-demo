@@ -42,9 +42,13 @@ imglyConfig {
         include 'assets:overlay-basic'
         include 'assets:sticker-shapes'
         include 'assets:sticker-emoticons'
+        include 'assets:sticker-animated'
 
         // Add animated sticker support
         include 'backend:sticker-animated'
+
+        // Add smart sticker support
+        include 'backend:sticker-smart'
     }
 }
 
