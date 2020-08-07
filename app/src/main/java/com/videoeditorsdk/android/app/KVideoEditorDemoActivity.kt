@@ -3,7 +3,9 @@ package com.videoeditorsdk.android.app
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.support.annotation.RequiresApi
 import android.util.Log
@@ -22,6 +24,7 @@ import ly.img.android.pesdk.backend.model.constant.Directory
 import ly.img.android.pesdk.backend.model.state.LoadSettings
 import ly.img.android.pesdk.backend.model.state.SaveSettings
 import ly.img.android.pesdk.backend.model.state.VideoEditorSaveSettings
+import ly.img.android.pesdk.ui.activity.ExternalVideoCaptureBuilder
 import ly.img.android.pesdk.ui.activity.VideoEditorBuilder
 import ly.img.android.pesdk.ui.model.state.*
 import ly.img.android.pesdk.ui.panels.item.PersonalStickerAddItem
@@ -34,7 +37,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
 
     companion object {
         const val VESDK_RESULT = 1
-        const val GALLERY_RESULT = 2
+        const val CAMERA_AND_GALLERY_RESULT = 2
     }
 
     // Important permission request for Android 6.0 and above, don't forget to add this!
@@ -55,7 +58,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
     // otherwise they are only available for the backend (like Serialisation)
     // See the specific feature sections of our guides if you want to know how to add our own Assets.
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-    private fun createVesdkSettingsList() =
+    private fun createVESDKSettingsList() =
         VideoEditorSettingsList()
             .configure<UiConfigFilter> {
                 it.setFilterList(FilterPackBasic.getFilterPack())
@@ -78,7 +81,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
                 )
             }
             .configure<VideoEditorSaveSettings> {
-                // Set custom editor image export settings
+                // Set custom editor video export settings
                 it.setExportDir(Directory.DCIM, "SomeFolderName")
                 it.setExportPrefix("result_")
                 it.setSavePolicy(SaveSettings.SavePolicy.RETURN_ALWAYS_ONLY_OUTPUT)
@@ -89,19 +92,22 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
         setContentView(R.layout.activity_main)
 
         val openGallery = findViewById<Button>(R.id.openGallery)
-
         openGallery.setOnClickListener {
-            openSystemGalleryToSelectAnVideo()
+            openSystemGalleryToSelectVideo()
         }
 
+        val captureVideo = findViewById<Button>(R.id.captureVideo)
+        captureVideo.setOnClickListener {
+            openSystemCameraToCaptureVideo()
+        }
     }
 
-    fun openSystemGalleryToSelectAnVideo() {
+    fun openSystemGalleryToSelectVideo() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.setDataAndType(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,"video/*")
 
         if (intent.resolveActivity(packageManager) != null) {
-            startActivityForResult(intent, GALLERY_RESULT)
+            startActivityForResult(intent, CAMERA_AND_GALLERY_RESULT)
         } else {
             Toast.makeText(
                 this,
@@ -111,19 +117,26 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
         }
     }
 
-    fun openEditor(inputImage: Uri?) {
+    fun openSystemCameraToCaptureVideo() {
+        ExternalVideoCaptureBuilder().startActivityForResult(
+            this,
+            CAMERA_AND_GALLERY_RESULT
+        )
+    }
+
+    fun openEditor(inputSource: Uri?) {
         val settingsList = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            createVesdkSettingsList()
+            createVESDKSettingsList()
         } else {
             Toast.makeText(this, "Video support needs Android 4.3", Toast.LENGTH_LONG).show()
             return
         }
 
         settingsList.configure<LoadSettings> {
-            it.source = inputImage
+            it.source = inputSource
         }
 
-        settingsList[LoadSettings::class].source = inputImage
+        settingsList[LoadSettings::class].source = inputSource
 
         VideoEditorBuilder(this)
             .setSettingsList(settingsList)
@@ -133,21 +146,21 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent) {
         super.onActivityResult(requestCode, resultCode, intent)
 
-        if (resultCode == RESULT_OK && requestCode == GALLERY_RESULT) {
+        if (resultCode == RESULT_OK && requestCode == CAMERA_AND_GALLERY_RESULT) {
             // Open Editor with some uri in this case with an video selected from the system gallery.
-            val selectedImage = intent.data
-            openEditor(selectedImage)
+            val selectedVideo = intent.data
+            openEditor(selectedVideo)
         } else if (resultCode == RESULT_OK && requestCode == VESDK_RESULT) {
             // Editor has saved an Video.
             val data = EditorSDKResult(intent)
 
-            // This adds the result and source image to Android's gallery
+            // This adds the result and source video to Android's gallery
             data.notifyGallery(EditorSDKResult.UPDATE_RESULT and EditorSDKResult.UPDATE_SOURCE)
 
             Log.i("VESDK", "Source video is located here ${data.sourceUri}")
             Log.i("VESDK", "Result video is located here ${data.resultUri}")
 
-            // TODO: Do something with the result image
+            // TODO: Do something with the result video
 
             // OPTIONAL: read the latest state to save it as a serialisation
             val lastState = data.settingsList
