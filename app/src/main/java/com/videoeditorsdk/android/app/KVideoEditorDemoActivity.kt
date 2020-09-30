@@ -20,9 +20,8 @@ import ly.img.android.pesdk.assets.sticker.animated.StickerPackAnimated
 import ly.img.android.pesdk.assets.sticker.emoticons.StickerPackEmoticons
 import ly.img.android.pesdk.assets.sticker.shapes.StickerPackShapes
 import ly.img.android.pesdk.backend.model.EditorSDKResult
-import ly.img.android.pesdk.backend.model.constant.Directory
+import ly.img.android.pesdk.backend.model.constant.OutputMode
 import ly.img.android.pesdk.backend.model.state.LoadSettings
-import ly.img.android.pesdk.backend.model.state.SaveSettings
 import ly.img.android.pesdk.backend.model.state.VideoEditorSaveSettings
 import ly.img.android.pesdk.ui.activity.ExternalVideoCaptureBuilder
 import ly.img.android.pesdk.ui.activity.VideoEditorBuilder
@@ -82,9 +81,8 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
             }
             .configure<VideoEditorSaveSettings> {
                 // Set custom editor video export settings
-                it.setExportDir(Directory.DCIM, "SomeFolderName")
-                it.setExportPrefix("result_")
-                it.setSavePolicy(SaveSettings.SavePolicy.RETURN_ALWAYS_ONLY_OUTPUT)
+                it.setOutputToGallery(Environment.DIRECTORY_DCIM)
+                it.outputMode = OutputMode.EXPORT_IF_NECESSARY
             }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -143,19 +141,20 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
             .startActivityForResult(this, VESDK_RESULT)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
+
+        intent ?: return
 
         if (resultCode == RESULT_OK && requestCode == CAMERA_AND_GALLERY_RESULT) {
             // Open Editor with some uri in this case with an video selected from the system gallery.
             val selectedVideo = intent.data
-            openEditor(selectedVideo)
+            if (selectedVideo != null) {
+                openEditor(selectedVideo)
+            }
         } else if (resultCode == RESULT_OK && requestCode == VESDK_RESULT) {
             // Editor has saved an Video.
             val data = EditorSDKResult(intent)
-
-            // This adds the result and source video to Android's gallery
-            data.notifyGallery(EditorSDKResult.UPDATE_RESULT and EditorSDKResult.UPDATE_SOURCE)
 
             Log.i("VESDK", "Source video is located here ${data.sourceUri}")
             Log.i("VESDK", "Result video is located here ${data.resultUri}")
