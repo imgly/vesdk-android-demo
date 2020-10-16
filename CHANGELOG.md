@@ -1,6 +1,12 @@
 # VideoEditor SDK - Changelog
 
-## v8.0.1
+## v8.0.2
+
+### Fixed
+* `IllegalArgumentException` while exporting a video on some devices.
+
+
+## ~~v8.0.1~~ (Deprecated version, don't use it!)
 
 ### Fixed
 * `KotlinNullPointerException` if using a relative export uri.

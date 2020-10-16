@@ -104,7 +104,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
         val intent = Intent(Intent.ACTION_PICK)
         intent.setDataAndType(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,"video/*")
 
-        if (intent.resolveActivity(packageManager) != null) {
+        if (Build.VERSION.SDK_INT >= 30 || intent.resolveActivity(packageManager) != null) {
             startActivityForResult(intent, CAMERA_AND_GALLERY_RESULT)
         } else {
             Toast.makeText(
