@@ -5,7 +5,7 @@
  |-- ------------------------------------------------------- --|
  |-- ------------------------------------------------------- -->
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://videoeditorsdk.com/assets/img/vesdk-logo-s.svg" alt="VideoEditor SDK Logo"/></a>
+    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://static.photoeditorsdk.com/vesdk/vesdk-logo-s.svg" alt="VideoEditor SDK Logo"/></a>
 </p>
 <p align="center">
   <a href="http://developer.android.com/guide/topics/manifest/uses-sdk-element.html#ApiLevels">
