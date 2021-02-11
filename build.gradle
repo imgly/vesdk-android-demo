@@ -2,7 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '1.4.10'
-    ext.vesdk_version = '8.0.8'
+    ext.vesdk_version = '8.0.9'
     repositories {
         google()
         jcenter()
