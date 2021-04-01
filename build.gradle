@@ -2,7 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '1.4.10'
-    ext.vesdk_version = '8.1.1'
+    ext.vesdk_version = '8.1.2'
     repositories {
         google()
         gradlePluginPortal()
@@ -23,7 +23,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        gradlePluginPortal()
     }
 }
 
