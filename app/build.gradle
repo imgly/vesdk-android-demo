@@ -9,7 +9,7 @@ imglyConfig {
 
     vesdk {
         enabled true
-        licencePath 'vesdk_android_license.dms'
+        licencePath 'vesdk_android_license'
     }
 
     // Define the modules you are need
@@ -73,8 +73,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
