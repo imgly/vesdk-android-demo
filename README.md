@@ -40,7 +40,7 @@ With an intuitive UI, an extensive filter gallery, advanced adjustment tools and
 ### Adjustments
 
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://img.ly/docs/vesdk/assets/images/guides/android/v8_1/screenshot_adjustments.jpg" alt="VideoEditor SDK Adjustments"/></a>
+    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://uploads-ssl.webflow.com/5ff596e2ff1e2cb058273601/603699f859e04bbf055b0dc7_Mobil_adjust.png" alt="VideoEditor SDK Adjustments"/></a>
 </p>
 <p align="center">
 
