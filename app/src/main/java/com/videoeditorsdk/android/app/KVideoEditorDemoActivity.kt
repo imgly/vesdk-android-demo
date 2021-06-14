@@ -19,6 +19,7 @@ import ly.img.android.pesdk.assets.overlay.basic.OverlayPackBasic
 import ly.img.android.pesdk.assets.sticker.animated.StickerPackAnimated
 import ly.img.android.pesdk.assets.sticker.emoticons.StickerPackEmoticons
 import ly.img.android.pesdk.assets.sticker.shapes.StickerPackShapes
+import ly.img.android.pesdk.backend.decoder.ImageSource
 import ly.img.android.pesdk.backend.model.EditorSDKResult
 import ly.img.android.pesdk.backend.model.constant.OutputMode
 import ly.img.android.pesdk.backend.model.state.LoadSettings
@@ -27,6 +28,7 @@ import ly.img.android.pesdk.ui.activity.ExternalVideoCaptureBuilder
 import ly.img.android.pesdk.ui.activity.VideoEditorBuilder
 import ly.img.android.pesdk.ui.model.state.*
 import ly.img.android.pesdk.ui.panels.item.PersonalStickerAddItem
+import ly.img.android.pesdk.ui.panels.item.ToolItem
 import ly.img.android.pesdk.ui.utils.PermissionRequest
 import ly.img.android.serializer._3.IMGLYFileWriter
 import java.io.File
@@ -59,6 +61,9 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     private fun createVESDKSettingsList() =
         VideoEditorSettingsList()
+            .configure<UiConfigMainMenu> {
+                it.toolList.remove(ToolItem("imgly_tool_audio_overlay_options", R.string.vesdk_audio_composition_title_name, ImageSource.create(R.drawable.imgly_icon_tool_audio)))
+            }
             .configure<UiConfigFilter> {
                 it.setFilterList(FilterPackBasic.getFilterPack())
             }
@@ -84,6 +89,7 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
                 it.setOutputToGallery(Environment.DIRECTORY_DCIM)
                 it.outputMode = OutputMode.EXPORT_IF_NECESSARY
             }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

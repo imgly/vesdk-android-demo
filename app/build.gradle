@@ -28,6 +28,8 @@ imglyConfig {
         include 'ui:transform'
         include 'ui:adjustment'
         include 'ui:text-design'
+        include 'ui:video-composition'
+        include 'ui:video-library'
 
         // Add the serializer if you need
         include 'backend:serializer'
@@ -53,13 +55,13 @@ imglyConfig {
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.3'
+    compileSdkVersion 30
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "com.photoeditorsdk.android.app"
         minSdkVersion 18
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
