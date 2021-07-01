@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">img.ly Editor</string>
+
+    <array name="imgly_operator_export_stack">
+        <item>@array/imgly_operation_load</item>
+        <item>@array/imgly_operation_filter</item>
+        <item>@array/imgly_operation_adjustment</item>
+        <item>@array/imgly_operation_focus</item>
+        <item>@array/imgly_operation_layer</item>
+        <item>@array/imgly_operation_cropmask</item>
+        <item>@array/imgly_operation_watermark</item>
+        <item>@array/imgly_operation_save</item>
+    </array>
+
+    <array name="imgly_operator_stack">
+        <item>@array/imgly_operation_load</item>
+        <item>@array/imgly_operation_filter</item>
+        <item>@array/imgly_operation_adjustment</item>
+        <item>@array/imgly_operation_focus</item>
+        <item>@array/imgly_operation_layer</item>
+        <item>@array/imgly_operation_cropmask</item>
+        <item>@array/imgly_operation_watermark</item>
+        <item>@array/imgly_operation_show</item>
+    </array>
+
+    <array name="imgly_operation_watermark">
+        <item>com.videoeditorsdk.android.app.WatermarkOperation</item>
+    </array>
+
 </resources>
