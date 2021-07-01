@@ -33,6 +33,8 @@ import ly.img.android.pesdk.ui.utils.PermissionRequest
 import ly.img.android.serializer._3.IMGLYFileWriter
 import java.io.File
 import java.io.IOException
+import ly.img.android.pesdk.backend.model.state.manager.EventListenerInterface
+import ly.img.android.pesdk.ui.activity.EditorBuilder
 
 class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
 
@@ -140,9 +142,11 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
             it.source = inputSource
         }
 
+        settingsList.setEventTracker(MyEventListener())
+
         settingsList[LoadSettings::class].source = inputSource
 
-        VideoEditorBuilder(this)
+        EditorBuilder(this, MyEditorActivity::class.java)
             .setSettingsList(settingsList)
             .startActivityForResult(this, VESDK_RESULT)
     }
