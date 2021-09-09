@@ -5,14 +5,14 @@
  |-- ------------------------------------------------------- --|
  |-- ------------------------------------------------------- -->
 <p align="center">
-    <a target="_blank" href="https://www.videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://static.photoeditorsdk.com/vesdk/vesdk-logo-s.svg" alt="VideoEditor SDK Logo"/></a>
+    <a target="_blank" href="https://img.ly/video-sdk/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://img.ly/static/logos/VE.SDK_Logo.svg" alt="VideoEditor SDK Logo"/></a>
 </p>
 <p align="center">
   <a href="http://developer.android.com/guide/topics/manifest/uses-sdk-element.html#ApiLevels">
     <img src="https://img.shields.io/badge/MIN_SDK-18-B8D529.svg?style=flat">
     <img src="https://img.shields.io/badge/BUILD_SDK-29-92D230.svg?style=flat">
   </a>
-  <a href="https://www.photoeditorsdk.com/documentation/android/getting-started">
+  <a href="https://img.ly/docs/vesdk/android/introduction/getting_started">
     <img src="https://img.shields.io/badge/platform-android-2DC25C.svg?style=flat">
   </a>
   <a href="https://artifactory.img.ly/artifactory/imgly/ly/img/android/pesdk/">
@@ -25,12 +25,12 @@
 
 
 # Seamlessly integrate video creation into your Android applications
-[VideoEditor SDK](https://videoeditorsdk.com/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android) expands the powerful tools and features of the PhotoEditor SDK into the realm of mobile video creation.
+[VideoEditor SDK](https://img.ly/video-sdk/?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android) expands the powerful tools and features of the PhotoEditor SDK into the realm of mobile video creation.
 
 With an intuitive UI, an extensive filter gallery, advanced adjustment tools and crops for social aspect ratios you’ll empower your users to create engaging and professional looking videos in a breeze.
   
 <p align="center">
-    <a target="_blank" href="https://account.photoeditorsdk.com/pricing?product=vesdk&?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://github.com/imgly/vesdk-android-demo/blob/master/CTA.png" alt="Get VideoEditor SDK" width="180" height="72" border="0" /></a>
+    <a target="_blank" href="https://img.ly/pricing&?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://img.ly/static/logos/VE.SDK_Button.svg" alt="Get VideoEditor SDK" width="180" height="72" border="0" /></a>
 </p>
 <p align="center"> 
 
@@ -70,4 +70,4 @@ A compelling message adds the final touch to any video. The VideoEditor SDK prov
 Make sure you have a commercial license before releasing your app. A commercial license is required for any app or service that has any form of monetization: This includes free apps with in-app purchases or ad supported applications. Please contact us if you want to purchase the commercial license.
 
 ## Support and License
-Use our [service desk](https://support.videoeditorsdk.com) for bug reports or support requests. To request a commercial license, please use the [license request](https://account.photoeditorsdk.com/pricing?product=vesdk&?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android) form on our website.
+Use our [service desk](https://support.img.ly) for bug reports or support requests. To request a commercial license, please use the [license request](https://img.ly/pricing?product=vesdk&?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android) form on our website.
