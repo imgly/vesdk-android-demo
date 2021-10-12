@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ This file is part of the PhotoEditor Software Development Kit.
   ~
   ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
@@ -14,8 +13,9 @@
   ~ https://www.photoeditorsdk.com/LICENSE.txt
   -->
 
+
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="#28ffffff" />
+    <solid android:color="#DF3461" />
     <corners android:radius="24dp" />
 </shape>
