@@ -2,7 +2,7 @@
 
 buildscript {
     ext.kotlin_version = '1.4.10'
-    ext.vesdk_version = '9.0.0'
+    ext.vesdk_version = '9.1.0'
     repositories {
         google()
         gradlePluginPortal()
@@ -23,6 +23,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://artifactory.img.ly/artifactory/imgly' }
     }
 }
 
