@@ -9,24 +9,46 @@ import androidx.annotation.MainThread
 import ly.img.android.pesdk.backend.views.abstracts.ImgLyUIRelativeContainer
 import com.videoeditorsdk.android.app.R
 import ly.img.android.pesdk.annotations.OnEvent
+import ly.img.android.pesdk.backend.model.state.manager.StateHandler
+import ly.img.android.pesdk.backend.model.state.manager.StateHandler.StateHandlerNotFoundException
+import ly.img.android.pesdk.backend.model.state.manager.StateHandlerContext
 import ly.img.android.pesdk.backend.model.state.manager.stateHandlerResolve
 import ly.img.android.pesdk.ui.model.state.UiStateMenu
 import ly.img.android.pesdk.ui.panels.MenuToolPanel
+import java.lang.RuntimeException
 
-class MyAdsView @JvmOverloads constructor(
+class MyRawAdsView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : ImgLyUIRelativeContainer(context, attrs), View.OnClickListener {
+) : RelativeLayout(context, attrs), View.OnClickListener, StateHandlerContext {
 
     /*
-     * This is an example of of extending the SDK by creating a view extending one of the ImgLyUI**** views,
-     * like ImgLyUIFrameContainer, ImgLyUILinearContainer, ImgLyUIRelativeContainer.
-     *
-     * Using these Views can have two advantages.
-     *   1. The View will be automatically subscribed to events. Simply use @OnEvent annotation to listen to any.
-     *   2. Use `val name: ModelClass by stateHandlerResolve()` to resolve any `ImglyState` or `ImglySettings class.
-     *
-     * See how you could implement the same by extending from any other system view by looking at `MyRawAdsView`.
+     * This is an example of extending the SDK by creating a view extending from any View.
+     * We strongly recommend to use the `MyAdsView` variant.
      */
+
+    ///////////////////////// SDK STATE-HANDLER BINDING /////////////////////////
+    override var stateHandler = try {
+        if (isInEditMode) {
+            StateHandler(context)
+        } else {
+            StateHandler.findInViewContext(context)
+        }
+    } catch (e: StateHandlerNotFoundException) {
+        throw RuntimeException(e)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        stateHandler.registerSettingsEventListener(this)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        stateHandler.unregisterSettingsEventListener(this)
+    }
+
+    ////////////////////////////// CUSTOM VIEW CODE //////////////////////////////
+
 
     private val menuState: UiStateMenu by stateHandlerResolve()
 
