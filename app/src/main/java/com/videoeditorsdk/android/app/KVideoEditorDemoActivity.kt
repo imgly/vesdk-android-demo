@@ -62,7 +62,9 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
     private fun createVESDKSettingsList() =
         VideoEditorSettingsList()
             .configure<UiConfigMainMenu> {
-                it.toolList.remove(ToolItem("imgly_tool_audio_overlay_options", R.string.vesdk_audio_composition_title_name, ImageSource.create(R.drawable.imgly_icon_tool_audio)))
+                it.toolList.removeAll { item ->
+                    item.id == "imgly_tool_audio_overlay_options"
+                }
             }
             .configure<UiConfigFilter> {
                 it.setFilterList(FilterPackBasic.getFilterPack())
