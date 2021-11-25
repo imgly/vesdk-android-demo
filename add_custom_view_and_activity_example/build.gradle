@@ -12,9 +12,9 @@ imglyConfig {
         licensePath 'vesdk_android_license'
     }
 
-    // Define the modules you are need
+    // Define the modules you need
     modules {
-        // Add all the UI modules you are need
+        // Add all the UI modules you need
         include 'ui:video-trim'
         include 'ui:core'
         include 'ui:text'

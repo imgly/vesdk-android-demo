@@ -18,12 +18,12 @@ class MyAdsView @JvmOverloads constructor(
 ) : ImgLyUIRelativeContainer(context, attrs), View.OnClickListener {
 
     /*
-     * This is an example of of extending the SDK by creating a view extending one of the ImgLyUI**** views,
-     * like ImgLyUIFrameContainer, ImgLyUILinearContainer, ImgLyUIRelativeContainer.
+     * This is an example of extending the SDK by creating a view extending one of the ImgLyUI**** views,
+     * like `ImgLyUIFrameContainer`, `ImgLyUILinearContainer`, `ImgLyUIRelativeContainer`.
      *
-     * Using these Views can have two advantages.
-     *   1. The View will be automatically subscribed to events. Simply use @OnEvent annotation to listen to any.
-     *   2. Use `val name: ModelClass by stateHandlerResolve()` to resolve any `ImglyState` or `ImglySettings class.
+     * Using these views can have two advantages.
+     *   1. The view will automatically subscribe to events. Simply use the @OnEvent annotation to listen to any.
+     *   2. Use `val name: ModelClass by stateHandlerResolve()` to resolve any `ImglyState` or `ImglySettings` class.
      *
      * See how you could implement the same by extending from any other system view by looking at `MyRawAdsView`.
      */

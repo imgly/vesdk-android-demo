@@ -55,9 +55,9 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
         }
     }
 
-    // Create a empty new SettingsList and apply the changes on this referance.
-    // If you include our asset Packs and use our UI you also need to add them to the UI,
-    // otherwise they are only available for the backend (like Serialisation)
+    // Create an empty new SettingsList and apply the changes to this reference.
+    // If you include our asset packs and use our UI you also need to add them to the UI,
+    // otherwise they are only available to the backend (e.g. serialization)
     // See the specific feature sections of our guides if you want to know how to add your own assets.
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     private fun createVESDKSettingsList() = VideoEditorSettingsList()

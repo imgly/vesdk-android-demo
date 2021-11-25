@@ -22,7 +22,7 @@ class MyRawAdsView @JvmOverloads constructor(
 ) : RelativeLayout(context, attrs), View.OnClickListener, StateHandlerContext {
 
     /*
-     * This is an example of extending the SDK by creating a view extending from any View.
+     * This is an example of extending the SDK by creating a view extending from any `View`.
      * We strongly recommend to use the `MyAdsView` variant.
      */
 
