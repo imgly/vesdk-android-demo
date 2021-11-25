@@ -29,9 +29,9 @@ open class MyCustomRoxOperation : RoxGlOperation() {
 
     override fun glSetup(): Boolean {
         // glSetup() is called initially when the operation is created.
-        // You could use it to initialize everything you need for your opengl operations.
-        // It is called from the thread with open gl render context.
-        // You can use raw OpenGl API call here.
+        // You could use it to initialize everything you need for your OpenGL operations.
+        // It is called from the thread with the OpenGL render context.
+        // You can use raw OpenGL API calls here.
 
         Log.d(TAG, "GlVersion is: " + GLES20.glGetString(GLES20.GL_VERSION))
         return super.glSetup()
@@ -39,15 +39,15 @@ open class MyCustomRoxOperation : RoxGlOperation() {
 
     override fun doOperation(requested: Requested): GlTexture? {
         // This is the render part.
-        // It is called from the thread with open gl render context.
-        // You can use raw OpenGl API call here.
+        // It is called from the thread with the OpenGL render context.
+        // You can use raw OpenGL API calls here.
 
 
         if (myCustomSettings.isEnabled) {
             // Use this to get the result from the previous renderer, like requested.
             val sourceTexture = sourceTextureAsRequested(requested)
             /*
-             * To change parameter (like size) of the source request, use this instead:
+             * To change parameters (like size) of the source request, use this instead:
              *
              * requestSourceAsTexture(generateSourceRequest(request).also { request ->
              *     // Change request parameter...
