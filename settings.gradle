@@ -1,1 +1,1 @@
-include ':app', ':add_custom_view_and_activity_example'
+include ':app', ':add_custom_view_and_activity_example', ':add_custom_operation'

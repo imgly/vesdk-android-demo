@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This file is part of the PhotoEditor Software Development Kit.
+  ~
+  ~ Copyright (C) 2019 img.ly GmbH <contact@img.ly>
+  ~ All rights reserved.
+  ~
+  ~ Redistribution and use in source and binary forms, without
+  ~ modification, are permitted provided that the following license agreement
+  ~ is approved and a legal/financial contract was signed by the user.
+  ~
+  ~ The license agreement can be found under the following link:
+  ~
+  ~ https://www.photoeditorsdk.com/LICENSE.txt
+  -->
+
+
+
+<resources>
+
+    <array name="imgly_operator_export_stack">
+        <item>@array/imgly_operation_load</item>
+        <item>@array/imgly_operation_filter</item>
+        <item>@array/imgly_operation_custom_filter</item>
+        <item>@array/imgly_operation_adjustment</item>
+        <item>@array/imgly_operation_focus</item>
+        <item>@array/imgly_operation_layer</item>
+        <item>@array/imgly_operation_cropmask</item>
+        <item>@array/imgly_operation_save</item>
+    </array>
+
+    <array name="imgly_operator_stack">
+        <item>@array/imgly_operation_load</item>
+        <item>@array/imgly_operation_filter</item>
+        <item>@array/imgly_operation_custom_filter</item>
+        <item>@array/imgly_operation_adjustment</item>
+        <item>@array/imgly_operation_focus</item>
+        <item>@array/imgly_operation_layer</item>
+        <item>@array/imgly_operation_cropmask</item>
+        <item>@array/imgly_operation_show</item>
+    </array>
+
+    <array name="imgly_operation_custom_filter">
+        <item>com.videoeditorsdk.android.app.custom.MyCustomRoxOperation</item>
+    </array>
+
+</resources>
