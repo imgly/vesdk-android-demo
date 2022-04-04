@@ -4,15 +4,13 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import androidx.annotation.RequiresApi
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
-import com.videoeditorsdk.android.app.custom.MyEditorBuilder
+import com.videoeditorsdk.android.app.custom.MyEditorActivity
 import ly.img.android.pesdk.VideoEditorSettingsList
 import ly.img.android.pesdk.assets.filter.basic.FilterPackBasic
 import ly.img.android.pesdk.assets.font.basic.FontPackBasic
@@ -26,14 +24,18 @@ import ly.img.android.pesdk.backend.model.constant.OutputMode
 import ly.img.android.pesdk.backend.model.state.LoadSettings
 import ly.img.android.pesdk.backend.model.state.VideoEditorSaveSettings
 import ly.img.android.pesdk.ui.activity.ExternalVideoCaptureBuilder
-import ly.img.android.pesdk.ui.model.state.*
+import ly.img.android.pesdk.ui.activity.VideoEditorBuilder
+import ly.img.android.pesdk.ui.model.state.UiConfigFilter
+import ly.img.android.pesdk.ui.model.state.UiConfigFrame
+import ly.img.android.pesdk.ui.model.state.UiConfigOverlay
+import ly.img.android.pesdk.ui.model.state.UiConfigSticker
+import ly.img.android.pesdk.ui.model.state.UiConfigText
 import ly.img.android.pesdk.ui.panels.item.PersonalStickerAddItem
-import ly.img.android.pesdk.ui.utils.PermissionRequest
 import ly.img.android.serializer._3.IMGLYFileWriter
 import java.io.File
 import java.io.IOException
 
-class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
+class KVideoEditorDemoActivity : Activity() {
 
     companion object {
         const val VIDEO_EDITOR_SDK_RESULT = 1
@@ -55,17 +57,11 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
         }
     }
 
-    // Create an empty new SettingsList and apply the changes to this reference.
-    // If you include our asset packs and use our UI you also need to add them to the UI,
-    // otherwise they are only available to the backend (e.g. serialization)
-    // See the specific feature sections of our guides if you want to know how to add your own assets.
-    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-    private fun createVESDKSettingsList() = VideoEditorSettingsList()
-        .configure<UiConfigMainMenu> {
-            it.toolList.removeAll { item ->
-                item.id == "imgly_tool_audio_overlay_options"
-            }
-        }
+    // Create an empty new SettingsList and apply the changes on this reference.
+    // If you include our asset Packs and use our UI you also need to add them to the UI Config,
+    // otherwise they are only available for the backend (like Serialisation)
+    // See the specific feature sections of our guides if you want to know how to add your own Assets.
+    private fun createVESDKSettingsList() = VideoEditorSettingsList(true)
         .configure<UiConfigFilter> { it.setFilterList(FilterPackBasic.getFilterPack()) }
         .configure<UiConfigText> { it.setFontList(FontPackBasic.getFontPack()) }
         .configure<UiConfigFrame> { it.setFrameList(FramePackBasic.getFramePack()) }
@@ -105,9 +101,11 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
                 it.source = inputSource
             }
 
-        MyEditorBuilder(this)
+        VideoEditorBuilder(this, MyEditorActivity::class.java)
             .setSettingsList(settingsList)
             .startActivityForResult(this, VIDEO_EDITOR_SDK_RESULT)
+
+        settingsList.release()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
@@ -132,13 +130,15 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
             try {
                 IMGLYFileWriter(lastState).writeJson(
                     File(
-                        Environment.getExternalStorageDirectory(),
+                        getExternalFilesDir(null),
                         "serialisationReadyToReadWithPESDKFileReader.json"
                     )
                 )
             } catch (e: IOException) {
                 e.printStackTrace()
             }
+
+            lastState.release()
 
         } else if (resultCode == RESULT_CANCELED && requestCode == VIDEO_EDITOR_SDK_RESULT) {
             // Editor was canceled
@@ -148,13 +148,4 @@ class KVideoEditorDemoActivity : Activity(), PermissionRequest.Response {
             // TODO: Do something with the source...
         }
     }
-
-
-    // Important permission request for Android 6.0 and above, don't forget to add this!
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        PermissionRequest.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
-    override fun permissionGranted() {}
-    override fun permissionDenied() { /* TODO: The Permission was rejected by the user. The Editor was not opened, Show a hint to the user and try again. */ }
 }
