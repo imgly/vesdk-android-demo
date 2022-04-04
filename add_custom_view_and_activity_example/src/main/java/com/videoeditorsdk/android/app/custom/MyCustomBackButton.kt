@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.TextView
 import androidx.annotation.MainThread
+import androidx.appcompat.widget.AppCompatTextView
 import com.videoeditorsdk.android.app.R
 import ly.img.android.pesdk.annotations.OnEvent
 import ly.img.android.pesdk.backend.model.state.manager.StateHandler
@@ -14,7 +15,7 @@ import ly.img.android.pesdk.ui.panels.MenuToolPanel
 
 class MyCustomBackButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : TextView(context, attrs), View.OnClickListener {
+) : AppCompatTextView(context, attrs), View.OnClickListener {
 
     private val cancelText: Int = R.string.pesdk_editor_cancel
     private var stateHandler = if (!isInEditMode) {

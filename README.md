@@ -9,14 +9,14 @@
 </p>
 <p align="center">
   <a href="http://developer.android.com/guide/topics/manifest/uses-sdk-element.html#ApiLevels">
-    <img src="https://img.shields.io/badge/MIN_SDK-18-B8D529.svg?style=flat">
-    <img src="https://img.shields.io/badge/BUILD_SDK-29-92D230.svg?style=flat">
+    <img src="https://img.shields.io/badge/MIN_SDK-21-B8D529.svg?style=flat">
+    <img src="https://img.shields.io/badge/BUILD_SDK-31-92D230.svg?style=flat">
   </a>
   <a href="https://img.ly/docs/vesdk/android/introduction/getting_started">
     <img src="https://img.shields.io/badge/platform-android-2DC25C.svg?style=flat">
   </a>
   <a href="https://artifactory.img.ly/artifactory/imgly/ly/img/android/pesdk/">
-    <img src="https://img.shields.io/badge/VERSION-9.2.0-007ec6.svg?style=flat" alt="Maven">
+    <img src="https://img.shields.io/badge/VERSION-10.0.0-007ec6.svg?style=flat" alt="Maven">
   </a>
   <a href="http://twitter.com/PhotoEditorSDK">
     <img src="https://img.shields.io/badge/twitter-@PhotoEditorSDK-8646E2.svg?style=flat" alt="Twitter">
