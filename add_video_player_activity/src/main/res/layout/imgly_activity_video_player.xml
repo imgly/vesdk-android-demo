@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ly.img.android.pesdk.ui.widgets.EditorRootView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootView"
+    style="?attr/Imgly.PESDK.Editor.Activity">
+    <ly.img.android.pesdk.backend.views.EditorPreview
+        android:id="@id/editorImageView"
+        android:layout_marginBottom="48dp"
+        style="?attr/Imgly.PESDK.Editor.Activity.Preview"/>
+    <ly.img.android.pesdk.ui.widgets.buttons.CancelButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:textColor="@color/imgly_editor_text_color"
+            android:background="@drawable/imgly_button"
+            android:padding="8dp"/>
+</ly.img.android.pesdk.ui.widgets.EditorRootView>

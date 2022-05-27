@@ -2,28 +2,21 @@
 
 buildscript {
     ext.kotlin_version = '1.5.32'
-    ext.vesdk_version = '10.1.0'
+    ext.vesdk_version = '10.2.0-alpha.1'
     repositories {
         google()
         gradlePluginPortal()
         maven { url 'https://artifactory.img.ly/artifactory/imgly' }
+        maven { url 'https://artifactory.img.ly/artifactory/imgly_development' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.2'
+        classpath 'com.android.tools.build:gradle:7.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
 
         // Insert the latest SDK version number here. You will find it here https://github.com/imgly/pesdk-android-demo/releases
         classpath "ly.img.android.pesdk:plugin:$vesdk_version"
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://artifactory.img.ly/artifactory/imgly' }
     }
 }
 

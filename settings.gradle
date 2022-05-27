@@ -1,1 +1,12 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://artifactory.img.ly/artifactory/imgly' }
+        maven { url 'https://artifactory.img.ly/artifactory/imgly_development' }
+    }
+}
+rootProject.name = "ImglyTest"
 include ':app', ':add_custom_view_and_activity_example', ':add_custom_operation'
+

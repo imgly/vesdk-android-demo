@@ -1,8 +1,45 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+    id 'ly.img.android.sdk'
+    id 'kotlin-android'
+}
 
-// Apply the IMGLYPlugin
-apply plugin: 'ly.img.android.sdk'
-apply plugin: 'kotlin-android'
+android {
+    compileSdkVersion 32
+    buildToolsVersion '32.0.0'
+
+    defaultConfig {
+        applicationId "com.photoeditorsdk.android.app"
+        minSdkVersion 21
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        resValue 'string', 'vesdk_version', "v$vesdk_version"
+    }
+    /* Set Java Language level to Java 1.8+ */
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        buildConfig = false
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+}
 
 // Configure the IMGLYPlugin
 imglyConfig {
@@ -34,7 +71,7 @@ imglyConfig {
         // Add the serializer if you need
         include 'backend:serializer'
 
-         // Allow Background Encoding [Optional]
+        // Allow Background Encoding [Optional]
         include 'backend:headless'
 
         // Add asset packs if you need
@@ -52,37 +89,4 @@ imglyConfig {
         // Add smart sticker support
         include 'backend:sticker-smart'
     }
-}
-
-android {
-    compileSdkVersion 31
-    buildToolsVersion '30.0.3'
-
-    defaultConfig {
-        applicationId "com.photoeditorsdk.android.app"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-
-        resValue 'string', 'vesdk_version', "v$vesdk_version"
-    }
-    /* Set Java Language level to Java 1.8+ */
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.3.1'
 }
