@@ -32,7 +32,7 @@ class MyEditorActivity : VideoEditorActivity() {
         val result = EditorSDKResult.Builder(EditorSDKResult.Status.CANCELED).also {
             it.setProduct(stateHandler.product)
             it.setSourceUri(loadSettings.source)
-            it.setSettingsList(getStateHandler().createSettingsListDump())
+            it.setSettingsList(stateHandler.createSettingsListDump())
         }
         setResult(result)
         finish()
