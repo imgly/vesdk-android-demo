@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 // Apply the IMGLYPlugin
 apply plugin: 'ly.img.android.sdk'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.devtools.ksp'
 
 // Configure the IMGLYPlugin
 imglyConfig {
@@ -55,8 +56,10 @@ imglyConfig {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion '30.0.3'
+    namespace "com.videoeditorsdk.android.app"
+    
+    compileSdkVersion 34
+    buildToolsVersion '34.0.0'
 
     defaultConfig {
         applicationId "com.photoeditorsdk.android.app"
