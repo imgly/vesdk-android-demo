@@ -1,5 +1,5 @@
 # VideoEditor SDK - Changelog
-## v10.8.0
+## v10.8.1
 
 ### Fixed
 * [VideoEditorSDK] When the video source changes rapidly, there may be issues with the IMGLYFileReader not waiting properly. This can lead to unexpected outcomes, such as trim start and end times not being accurate.
