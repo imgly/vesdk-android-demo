@@ -2,6 +2,7 @@
 ## v10.8.1
 
 ### Fixed
+* [VideoEditorSDK] Video export was limited by the frame rate limiter.
 * [VideoEditorSDK] When the video source changes rapidly, there may be issues with the IMGLYFileReader not waiting properly. This can lead to unexpected outcomes, such as trim start and end times not being accurate.
 * [VideoEditorSDK] `ArithmeticException` in `VideoCompositionSettings` when source is changed.
 * [PhotoEditorSDK] Exporting images on the Pixel 8 (Pro) and maybe other devices, result in an endless export spinner.
@@ -22,6 +23,9 @@
 * KSP (Kotlin Symbol Processing) can now be activated as an alternative to KAPT (Kotlin Annotation Processing Tool) for annotation processing.
   * 🚨 This feature is automatically enabled when you add the KSP plugin into your project.
   * If auto-detection fails, you can manually enable it using the following configuration: `imglyConifg { useKspProcessor = true }`
+
+## ~~v10.8.0~~ (Broken release, don't use it!)
+* This version was recalled due to an error
 
 ## v10.7.3
 

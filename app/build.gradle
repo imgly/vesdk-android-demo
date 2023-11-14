@@ -64,7 +64,7 @@ android {
     defaultConfig {
         applicationId "com.photoeditorsdk.android.app"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
