@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.google.devtools.ksp'
 
 // Configure the IMGLYPlugin
-imglyConfig {
+IMGLY.configure {
 
     vesdk {
         enabled true
