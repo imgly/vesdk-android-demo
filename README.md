@@ -30,7 +30,7 @@
 With an intuitive UI, an extensive filter gallery, advanced adjustment tools and crops for social aspect ratios you’ll empower your users to create engaging and professional looking videos in a breeze.
   
 <p align="center">
-    <a target="_blank" href="https://img.ly/pricing&?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://img.ly/static/logos/VE.SDK_Button.svg" alt="Get VideoEditor SDK" width="180" height="72" border="0" /></a>
+    <a target="_blank" href="https://img.ly/pricing?utm_campaign=Projects&utm_source=Github&utm_medium=VESDK&utm_content=Android"><img src="https://img.ly/static/logos/VE.SDK_Button.svg" alt="Get VideoEditor SDK" width="180" height="72" border="0" /></a>
 </p>
 <p align="center"> 
 
