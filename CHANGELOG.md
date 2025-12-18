@@ -1,4 +1,4 @@
-# PhotoEditor SDK - Changelog
+# VideoEditor SDK - Changelog
 ## Unreleased
 ### Fixed
 * Prevent crash when `EditorActivity` is recreated without the required `SettingsList` (e.g. after process death). The activity now finishes so the host app can relaunch via `PhotoEditorBuilder`/`CameraPreviewBuilder`.
