@@ -1,4 +1,9 @@
 # VideoEditor SDK - Changelog
+## 10.10.14
+### Fixed 
+* AGP 9 Final Module not being generated automatically 
+
+
 ## 10.10.13
 ### Fixed
 * Improve Android editor action bar safe-area handling in landscape so edge buttons stay accessible on devices with system gesture or cutout insets.
