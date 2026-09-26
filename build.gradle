@@ -3,11 +3,11 @@
 buildscript {
     ext.kotlin_version = '1.8.22'
     ext.ksp_version = '1.8.22-1.0.11'
-    ext.vesdk_version = '10.10.14'
+    ext.vesdk_version = '10.10.16'
     repositories {
         google()
         gradlePluginPortal()
-        maven { url 'https://artifactory.img.ly/artifactory/imgly' }
+        maven { url 'https://maven.img.ly/imgly' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.1.2'
@@ -25,7 +25,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://artifactory.img.ly/artifactory/imgly' }
+        maven { url 'https://maven.img.ly/imgly' }
     }
 }
 
